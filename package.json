@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "host": "vite --host",
     "test": "vitest",
-    "predeploy": "npm run build",
+    "predeploy": "",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
