@@ -1,7 +1,7 @@
 import { configureStore,createSlice } from '@reduxjs/toolkit'
 
-const fontLocalStorage = JSON.parse(localStorage.getItem("font") || "Serif")
-const themeLocalStorage = JSON.parse(localStorage.getItem("theme") || "light")
+const fontLocalStorage = JSON.parse(localStorage.getItem("font") || ' "Serif" ');
+const themeLocalStorage = JSON.parse(localStorage.getItem("theme") || ' "light" ');
 const mainSlice = createSlice({
     name: "main",
     initialState: {value: {theme: themeLocalStorage, font: fontLocalStorage, fontArray:["Serif", "Arial", "Courier New"], wrong: "", word: "" }},
