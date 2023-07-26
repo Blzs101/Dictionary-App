@@ -36,7 +36,7 @@ export function Search() {
 
     useEffect(() => {
         dispatch(setIsLoading(result.isFetching));
-    }, [result.isFetching,])
+    }, [result.isFetching])
 
     const changeTheme = () => {
         dispatch(theme === "light" ? setTheme("dark") : setTheme("light"))
@@ -54,7 +54,7 @@ export function Search() {
     return (
         <>
             <div className="flex items-center py-4" >
-                <img src="public\book-svgrepo-com.svg" alt="book logo"></img>
+                <img src={theme === "light" ? "public/book-svgrepo-com.svg" : "public/book-svgrepo-com-dark-mode.svg"} alt="book logo"></img>
                 <div className="flex justify-end w-full gap-2">
                     <select onChange={e => dispatch(setFont(e.target.value))} value={font} className="p-1 border-r-2 ">
                         {fontArray.map((value: string, id: number) => {
@@ -64,7 +64,7 @@ export function Search() {
                     <div className="flex items-center justify-center">
                         <Switch onChange={changeTheme} checked={theme === "dark"} uncheckedIcon={false} checkedIcon={false} height={16} width={30} handleDiameter={14} offColor="#343541" onColor="#9333ea" />
                     </div>
-                    <img src="public\moon-line-icon.svg" alt="half moon logo"></img>
+                    <img src={theme === "light" ? "public/moon-svgrepo-com.svg" : "public/moon-svgrepo-com-dark-mode.svg"} alt="half moon logo"></img>
                 </div>
             </div>
             <form className={`h-[50px] ${wrong}`} onSubmit={handleSubmit}>

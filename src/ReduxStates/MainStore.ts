@@ -1,15 +1,18 @@
 import { configureStore,createSlice } from '@reduxjs/toolkit'
 
-
+const fontLocalStorage = JSON.parse(localStorage.getItem("font") || "Serif")
+const themeLocalStorage = JSON.parse(localStorage.getItem("theme") || "light")
 const mainSlice = createSlice({
     name: "main",
-    initialState: {value: {theme: "light", font: "Serif", fontArray:["Serif", "Arial", "Courier New"], wrong: "", word: "" }},
+    initialState: {value: {theme: themeLocalStorage, font: fontLocalStorage, fontArray:["Serif", "Arial", "Courier New"], wrong: "", word: "" }},
     reducers:{
         setTheme: (state, action) =>{
             state.value.theme = action.payload;
+            localStorage.setItem("theme", JSON.stringify(state.value.theme))
         },
         setFont: (state, action) =>{
             state.value.font = action.payload;
+            localStorage.setItem("font", JSON.stringify(state.value.font))
         },
         setWrong: (state, action) =>{
             state.value.wrong = action.payload;
@@ -18,6 +21,7 @@ const mainSlice = createSlice({
             state.value.word = action.payload;
         }
     }
+   
 });
 
 const fetchedData = createSlice({
@@ -42,7 +46,6 @@ const isLoading = createSlice({
 export const {setTheme, setFont, setWrong, setWord} = mainSlice.actions;
 export const {setFetchedData} = fetchedData.actions;
 export const {setIsLoading} = isLoading.actions;
-
 
 export const mainStore = configureStore({
     reducer:{
