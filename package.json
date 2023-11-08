@@ -1,7 +1,6 @@
 {
   "name": "dictionary-web-app",
   "private": true,
-  "homepage": "https://Blzs101.github.io/Dictionary-App",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -10,9 +9,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "host": "vite --host",
-    "test": "vitest",
-    "predeploy": "",
-    "deploy": "gh-pages -d dist"
+    "test": "vitest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

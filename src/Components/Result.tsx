@@ -1,18 +1,19 @@
+import { useAppSelector } from "../ReduxStates/MainStoreHooks";
 import { useRef } from "react"
-import { useSelector } from "react-redux";
+
 
 
 
 export default function Result() {
-    const word = useSelector((state: any) => { return state.fetchedData?.value?.word })
-    const phonetics = useSelector((state: any) => { return state.fetchedData?.value?.phonetics })
-    const phonetic = useSelector((state: any) => { return state.fetchedData?.value?.phonetic })
-    const meanings = useSelector((state: any) => { return state.fetchedData?.value?.meanings })
-    const sourceUrls = useSelector((state: any) => { return state.fetchedData?.value?.sourceUrls })
-    const meaningResultOne = meanings?.[0].definitions.map((element: any) => element.definition);
-    const meaningResultTwoDefinition = meanings?.[1] && meanings?.[1].definitions.map((element: any) => element.definition);
-    const meaningResultTwoExample = meanings?.[1] && meanings?.[1].definitions.map((element: any) => element.example).filter((example: any) => example !== undefined);
-    const audioFind = phonetics?.map((element: any) => element.audio !== "" ? element.audio : undefined).filter(Boolean);
+    const word = useAppSelector((state) => { return state.fetchedData?.value?.word })
+    const phonetics = useAppSelector((state) => { return state.fetchedData?.value?.phonetics })
+    const phonetic = useAppSelector((state) => { return state.fetchedData?.value?.phonetic })
+    const meanings = useAppSelector((state) => { return state.fetchedData?.value?.meanings })
+    const sourceUrls = useAppSelector((state) => { return state.fetchedData?.value?.sourceUrls })
+    const meaningResultOne = meanings?.[0].definitions.map((element) => element.definition);
+    const meaningResultTwoDefinition = meanings?.[1] ? meanings?.[1].definitions.map((element) => element.definition) : [];
+    const meaningResultTwoExample = meanings?.[1] ? meanings?.[1].definitions.map((element) => element.example).filter((example) => example !== undefined) : [];
+    const audioFind = phonetics?.map((element) => element.audio !== "" ? element.audio : undefined).filter(Boolean);
     const audioRef = useRef<HTMLAudioElement>(null);
 
     return (
@@ -42,14 +43,14 @@ export default function Result() {
                     <h2 className="py-3 text-lg font-bold">{meanings?.[1].partOfSpeech}</h2>
                     <div className="text-gray-400">Meaning(s)</div>
                     <ul className="w-full ml-5 list-disc" >
-                        {meaningResultTwoDefinition && meaningResultTwoDefinition.map((element: string, id: number) => {
+                        {meaningResultTwoDefinition ? meaningResultTwoDefinition.map((element: string, id: number) => {
                             return (
                                 <li key={id} className="w-full py-2 pr-5">
                                     {element}
                                     {meaningResultTwoExample.length !== 0 && meaningResultTwoExample.map((e: string, key: number) => <p key={key} className="text-sm text-gray-400">{`"${e}"`}</p>)}
                                 </li>
                             )
-                        })}
+                        }) : null}
                     </ul>
                 </div> : null
             }
