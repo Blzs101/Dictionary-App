@@ -101,7 +101,7 @@ export function Search() {
     return (
         <>
             <div className="flex items-center py-4">
-                <img src="public\book-svgrepo-com.svg" alt="book logo"></img>
+                <img src={`${theme === "dark" ? "public/book-svgrepo-com-dark-mode.svg" : "public/book-svgrepo-com.svg"}`} alt="book logo"></img>
                 <div className="flex justify-end w-full gap-2">
                     <select
                         onChange={(e) => dispatch(setFont(e.target.value))}
@@ -129,7 +129,7 @@ export function Search() {
                             onColor="#9333ea"
                         />
                     </div>
-                    <img src="public\moon-line-icon.svg" alt="half moon logo"></img>
+                    <img src={`${theme === "dark" ? "public/moon-svgrepo-com-dark-mode.svg" : "public/moon-svgrepo-com.svg"}`} alt="half moon logo"></img>
                 </div>
             </div>
             <form className={`h-[50px] ${wrong}`} onSubmit={handleSubmit}>
