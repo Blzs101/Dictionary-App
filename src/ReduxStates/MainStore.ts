@@ -2,6 +2,8 @@
 import { PayloadAction, configureStore,createSlice } from '@reduxjs/toolkit'
 import { DictionaryEntry } from '../Components/Search';
 
+const fontLocalStorage = JSON.parse(localStorage.getItem("font") || ' "Serif" ');
+const themeLocalStorage = JSON.parse(localStorage.getItem("theme") || ' "light" ');
 interface mainTypes {
     value:{
         theme: string,
@@ -13,8 +15,8 @@ interface mainTypes {
 }
 const mainState : mainTypes = {
     value: {
-        theme: "light", 
-        font: "Serif", 
+        theme: themeLocalStorage, 
+        font: fontLocalStorage, 
         fontArray:["Serif", "Arial", "Courier New"],
         wrong:"",
         word:""
@@ -26,9 +28,11 @@ const mainSlice = createSlice({
     reducers:{
         setTheme: (state, action:PayloadAction<string>) =>{
             state.value.theme = action.payload;
+            localStorage.setItem("theme", JSON.stringify(state.value.theme))
         },
         setFont: (state, action:PayloadAction<string>) =>{
             state.value.font = action.payload;
+            localStorage.setItem("font", JSON.stringify(state.value.font))
         },
         setWrong: (state, action:PayloadAction<string>) =>{
             state.value.wrong = action.payload;
