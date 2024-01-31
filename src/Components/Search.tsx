@@ -105,8 +105,8 @@ export function Search() {
           <img
             src={`${
               theme === 'dark'
-                ? '/book-svgrepo-com-dark-mode.svg'
-                : '/book-svgrepo-com.svg'
+                ? 'public/book-svgrepo-com-dark-mode.svg'
+                : 'public/book-svgrepo-com.svg'
             }`}
             alt="book logo"
           />
@@ -141,8 +141,8 @@ export function Search() {
           <img
             src={`${
               theme === 'dark'
-                ? '/moon-svgrepo-com-dark-mode.svg'
-                : '/moon-svgrepo-com.svg'
+                ? 'public/moon-svgrepo-com-dark-mode.svg'
+                : 'public/moon-svgrepo-com.svg'
             }`}
             alt="half moon logo"
           />
@@ -162,7 +162,7 @@ export function Search() {
           className="absolute mt-[12.5px] ml-[-40px]"
         >
           <img
-            src="/icons8-search.svg"
+            src="public/icons8-search.svg"
             alt="search logo"
             className="fill-purple-600"
           />

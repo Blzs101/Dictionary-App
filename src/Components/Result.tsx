@@ -45,7 +45,7 @@ export default function Result() {
             onClick={() => audioRef.current && audioRef.current.play()}
             className="flex items-center justify-center w-16 h-16 bg-purple-300 rounded-full "
           >
-            <img src="/play-button-svgrepo-com.svg" alt="play logo" />
+            <img src="public/play-button-svgrepo-com.svg" alt="play logo" />
           </button>
           {audioFind && <audio ref={audioRef} src={audioFind[0]}></audio>}
         </div>
