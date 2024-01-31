@@ -16,15 +16,27 @@
   .dark span{
     color:white;
   }
-.Serif{
-  font-family: serif;
+.Sans-serif{
+  font-family:sans-serif;
+  font-weight: 400;
+  font-size: medium;
 }
-.Arial{
-  font-family: Arial, Helvetica, sans-serif;
+.Monospace{
+  font-family: monospace;
+  font-weight: 400;
+  font-size: medium;
 }
 .CourierNew{
   font-family: 'Courier New', Courier, monospace;
+  font-weight: 400;
+  font-size: medium;
 }
+.Franklin{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 400;
+  font-size: medium;
+}
+
 @keyframes shake-horizontal {
   0%,
   100% {

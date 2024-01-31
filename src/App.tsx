@@ -1,32 +1,39 @@
-import { Suspense, lazy } from "react";
-import "./App.css"
-import { Search } from "./Components/Search";
-import { useSelector } from "react-redux";
-import Loading from "./Components/Loading"
+import { Suspense, lazy } from 'react';
+import './App.css';
+import { Search } from './Components/Search';
+import Loading from './Components/Loading';
+import { useAppSelector } from './ReduxStates/MainStoreHooks';
 
-const Result = lazy(async () => import("./Components/Result"))
-
+const Result = lazy(async () => import('./Components/Result'));
 
 function App() {
-  const isLoading = useSelector((state: any) => { return state.isLoading.isLoading })
-  const fetchData = useSelector((state: any) => { return state.fetchedData.value })
-  const font = useSelector((state: any) => state.main.value.font);
-  const theme = useSelector((state: any) => state.main.value.theme);
+  const isLoading = useAppSelector((state) => {
+    return state.isLoading.isLoading;
+  });
+  const fetchData = useAppSelector((state) => {
+    return state.fetchedData.value;
+  });
+  const font = useAppSelector((state) => state.main.value.font);
+  const theme = useAppSelector((state) => state.main.value.theme);
 
   return (
-    <div className={`${font.replace(/\s+/g, '')} ${theme} inset-0 w-full h-full fixed overflow-auto`} >
+    <div
+      className={`${font.replace(
+        /\s+/g,
+        ''
+      )} ${theme} inset-0 w-full h-full fixed overflow-auto`}
+    >
       <div className="w-full p-2 md:mx-auto md:w-1/2 ">
         <Search />
 
-        {fetchData ?
+        {fetchData ? (
           <Suspense fallback={<Loading />}>
             {isLoading ? <Loading /> : <Result />}
           </Suspense>
-          : null
-        }
-      </div >
-    </div >
-  )
+        ) : null}
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
