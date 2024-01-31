@@ -101,7 +101,7 @@ export function Search() {
   return (
     <>
       <div className="flex items-center py-4">
-        <a href="/">
+        <a href="/Dictionary-App">
           <img
             src={`${
               theme === 'dark'
